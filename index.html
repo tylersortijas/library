@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;900&display=swap" rel="stylesheet">
+    <script src="index.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- Sidebar input section -->
+        <div class="sidebar">
+            <div class="title-sidebar">
+                <h2>Library</h2>
+                <p>by TFSS</p>
+            </div>
+            <div class="inputs">
+                <form action="/">
+                    <ul>
+                        <div>
+                            <li><label for="title">Title</label></li>
+                            <li><input type="text" name="book_title" id="title" placeholder="Avatar vs Avengers?"></li>
+                        </div>
+                        <div>
+                            <li><label for="author">Author</label></li>
+                            <li><input type="text" name="book_author" id="author" placeholder="James Cameron"></li>
+                        </div>
+                        <div>
+                            <li><label for="pages">Pages</label></li>
+                            <li><input type="number" name="book_pages" id="pages" placeholder="300"></li>
+                        </div>
+                        <div>
+                            <li><label for="read">Have you read the book?</label></li>
+                            <li><input type="text" name="book_read" id="read" placeholder="Yes/No"></li>
+                        </div>
+                        <button type="submit">Add Book</button>
+                    </ul>
+                </form>
+            </div>
+        </div>
+
+        <!-- Book section  -->
+        <div class="content">
+                <div class="card">
+                    <h4>The Hobbit</h4>
+                    <h5>J. R. R. Tolkien</h5>
+                    <p>295 pages</p>
+                    <p>Read</p>
+                </div>
+        </div>
+    </div>
+</body>
+
+</html>

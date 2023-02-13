@@ -1,0 +1,65 @@
+:root {
+    --green-color: #90EE90;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Playfair Display', serif;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    min-height: 100vh;
+}
+
+/* Sidebar Section */
+
+.sidebar {
+    grid-column: 1 / 2;
+    padding: 20px 30px;
+    background-color: var(--green-color);
+    font-weight: bold;
+}
+
+.title-sidebar {
+    margin-bottom: 15px;
+}
+
+.title-sidebar h2 {
+    font-size: 2rem;
+}
+
+.inputs ul > div{
+    margin-bottom: 10px;
+}
+
+.inputs div > li {
+    margin-bottom: 5px;
+}
+
+.inputs ul li {
+    list-style-type: none;
+}
+
+/* Book Section */
+
+.content {
+    grid-column: 2 / 3;
+    background-color: #bccbde;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
+
+.content .card {
+    background-color: #ffff;
+    color: black;
+    text-align: center;
+    height: 200px;
+}
