@@ -1,5 +1,24 @@
 // Array to hold the books
-let myLibrary = [];
+let myLibrary = [
+  {
+    title: "The Lord of the Rings",
+    author: "J. R. R. Tolkien",
+    pages: "479",
+    read: "not read yet",
+  },
+];
+
+console.log(myLibrary);
+
+// DOM Manipulation
+const content = document.querySelector(".content");
+
+const form = document.querySelector("form");
+let titleInput = document.querySelector("#title");
+let authorInput = document.querySelector("#author");
+let pagesInput = document.querySelector("#pages");
+let readInput = document.querySelector("#read");
+let submitButton = document.querySelector("#submit");
 
 // Constructor for each book
 function Book(title, author, pages, read) {
@@ -7,14 +26,38 @@ function Book(title, author, pages, read) {
   this.author = author;
   this.pages = pages;
   this.read = read;
-  this.info = function () {
-    return `${title} by ${author}, ${pages}, ${read}`;
-  };
 }
 
-// Starting books in the library
-myLibrary.push("The Hobbit", "J. R. R. Tolkien", "295", "not read yet");
-myLibrary.push("The Lord of the Rings", "J. R. R. Tolkien", "479", "not read yet");
-myLibrary.push("The Adventures of Captain Underpants", "Dav Pilkey", "125", "read");
+// Add a book to library
+const addBookToLibrary = () => {
+  let title = titleInput.value;
+  let author = authorInput.value;
+  let pages = pagesInput.value;
+  let read = readInput.value;
+  let newBook = new Book(title, author, pages, read);
+  myLibrary.push(newBook);
+};
 
-// DOM Manipulation
+// Display library array
+const displayFunction = () => {
+  for (let i = 0; i < myLibrary.length; i++) {
+    let book = document.createElement("div");
+    book.classList.add("card");
+    content.appendChild(book);
+
+    let title = document.createElement("h4");
+    title.textContent = `${myLibrary[i].title}`;
+    book.appendChild(title);
+    let author = document.createElement("h5");
+    author.textContent = `${myLibrary[i].author}`;
+    book.appendChild(author);
+    let pages = document.createElement("p");
+    pages.textContent = `${myLibrary[i].pages}`;
+    book.appendChild(pages);
+    let read = document.createElement("p");
+    read.textContent = `${myLibrary[i].read}`;
+    book.appendChild(read);
+  }
+};
+
+displayFunction();
