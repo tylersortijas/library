@@ -13,6 +13,9 @@ console.log(myLibrary);
 // DOM Manipulation
 const content = document.querySelector(".content");
 
+const addBookButton = document.querySelector("button");
+const cancelButton = document.querySelector("#cancel");
+
 const form = document.querySelector("form");
 let titleInput = document.querySelector("#title");
 let authorInput = document.querySelector("#author");
@@ -37,6 +40,26 @@ const addBookToLibrary = () => {
   let newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook);
 };
+
+// Form pop-up to add new Book
+const openForm = () => {
+  document.querySelector(".inputs").style.display = "block";
+};
+
+// Function to close pop-up
+const closeForm = () => {
+  document.querySelector(".inputs").style.display = "none";
+}
+
+// Book button to add book
+addBookButton.addEventListener("click", () => {
+  openForm();
+});
+
+// Button to close Form pop-up
+cancelButton.addEventListener("click", () => {
+  closeForm();
+});
 
 // Display library array
 const displayFunction = () => {

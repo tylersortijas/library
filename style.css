@@ -26,24 +26,19 @@
     font-weight: bold;
 }
 
-.title-sidebar {
-    margin-bottom: 15px;
-}
-
 .title-sidebar h2 {
     font-size: 2rem;
 }
 
-.inputs ul > div{
-    margin-bottom: 10px;
+button {
+    margin-top: 40px;
+    border-radius: 15px;
+    padding: 10px 20px;
+    border: 2px solid black;
 }
 
-.inputs div > li {
-    margin-bottom: 5px;
-}
-
-.inputs ul li {
-    list-style-type: none;
+button:hover {
+    background-color: #bccbde;
 }
 
 /* Book Section */
@@ -62,4 +57,21 @@
     color: black;
     text-align: center;
     height: 200px;
+}
+
+/* Form Pop-Up Menu */
+
+.inputs {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+}
+
+.form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
 }
