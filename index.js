@@ -17,6 +17,7 @@ const content = document.querySelector(".content");
 const addBookButton = document.querySelector("button");
 const cancelButton = document.querySelector("#cancel");
 const submitButton = document.querySelector("#submit");
+const removeButton = document.createElement("button");
 
 const form = document.querySelector("form");
 let titleInput = document.querySelector("#title");
@@ -41,7 +42,7 @@ const addBookToLibrary = () => {
   let newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook);
   displayNewBook();
-  // Adds Id to any new book added 
+  // Adds Id to any new book added
   myLibrary.forEach((book, i) => {
     book.id = i + 1;
   });
@@ -66,9 +67,13 @@ const displayNewBook = () => {
     let read = document.createElement("p");
     read.textContent = `${myLibrary[i].read}`;
     book.appendChild(read);
-    let removeButton = document.createElement("button");
     removeButton.textContent = "Remove";
     book.appendChild(removeButton);
+    removeButton.addEventListener("click", () => {
+      arrayIndex = myLibrary.findIndex((x) => x.title === this.title);
+      myLibrary.splice(arrayIndex, 1);
+      book.parentNode.removeChild(book);
+    });
   }
 };
 
@@ -80,7 +85,7 @@ const openForm = () => {
 // Function to close pop-up
 const closeForm = () => {
   document.querySelector(".inputs").style.display = "none";
-}
+};
 
 // Book button to add book
 addBookButton.addEventListener("click", () => {
@@ -97,6 +102,12 @@ submitButton.addEventListener("click", (e) => {
 cancelButton.addEventListener("click", () => {
   closeForm();
 });
+
+// Remove book from library button
+// removeButton.addEventListener("click", () => {
+//   arrayIndex = myLibrary.findIndex((x) => x.title === this.title);
+//   myLibrary.splice(arrayIndex, 1);
+// });
 
 // Display library array
 const initialDisplayLibrary = () => {
@@ -117,9 +128,13 @@ const initialDisplayLibrary = () => {
     let read = document.createElement("p");
     read.textContent = `${myLibrary[i].read}`;
     book.appendChild(read);
-    let removeButton = document.createElement("button");
     removeButton.textContent = "Remove";
     book.appendChild(removeButton);
+    removeButton.addEventListener("click", () => {
+      arrayIndex = myLibrary.findIndex((x) => x.title === this.title);
+      myLibrary.splice(arrayIndex, 1);
+      book.parentNode.removeChild(book);
+    });
   }
 };
 
