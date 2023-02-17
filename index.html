@@ -28,21 +28,21 @@
                     <ul>
                         <div>
                             <li><label for="title">Title</label></li>
-                            <li><input type="text" name="book_title" id="title" placeholder="Avatar vs Avengers?"></li>
+                            <li><input type="text" name="book_title" id="title" placeholder="Avatar vs Avengers?" required></li>
                         </div>
                         <div>
                             <li><label for="author">Author</label></li>
-                            <li><input type="text" name="book_author" id="author" placeholder="James Cameron"></li>
+                            <li><input type="text" name="book_author" id="author" placeholder="James Cameron" required></li>
                         </div>
                         <div>
                             <li><label for="pages">Pages</label></li>
-                            <li><input type="number" name="book_pages" id="pages" placeholder="300"></li>
+                            <li><input type="number" name="book_pages" id="pages" placeholder="300" required></li>
                         </div>
                         <div>
                             <li><label for="read">Have you read the book?</label></li>
-                            <li><input type="text" name="book_read" id="read" placeholder="Yes/No"></li>
+                            <li><input type="text" name="book_read" id="read" placeholder="Yes/No" required></li>
                         </div>
-                        <button type="submit" id="submit">Confirm</button>
+                        <button type="button" id="submit">Confirm</button>
                         <button type="button" id="cancel">Cancel</button>
                     </ul>
                 </form>
@@ -56,6 +56,7 @@
                     <h5>J. R. R. Tolkien</h5>
                     <p>295 pages</p>
                     <p>Read</p>
+                    <button>Remove</button>
                 </div>
         </div>
     </div>
