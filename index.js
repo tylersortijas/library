@@ -17,6 +17,7 @@ const content = document.querySelector(".content");
 const addBookButton = document.querySelector("button");
 const cancelButton = document.querySelector("#cancel");
 const submitButton = document.querySelector("#submit");
+const removeButton = document.createElement("button");
 
 const form = document.querySelector("form");
 let titleInput = document.querySelector("#title");
