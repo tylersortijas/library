@@ -40,37 +40,64 @@ const addBookToLibrary = () => {
   let read = readInput.value;
   let newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook);
-  displayNewBook();
-  // Adds Id to any new book added 
+  displayBook();
+  // Adds Id to any new book added
   myLibrary.forEach((book, i) => {
     book.id = i + 1;
   });
 };
 
-// Displays the newest book in Library
-const displayNewBook = () => {
-  for (let i = myLibrary.length - 1; i < myLibrary.length; i++) {
-    let book = document.createElement("div");
-    book.classList.add("card");
-    content.appendChild(book);
+// Displays the newest book and initial books in Library
+const displayBook = () => {
+  if (myLibrary.length === 0 || myLibrary.length === 1) {
+    for (let i = 0; i < myLibrary.length; i++) {
+      let book = document.createElement("div");
+      book.classList.add("card");
+      content.appendChild(book);
 
-    let title = document.createElement("h4");
-    title.textContent = `${myLibrary[i].title}`;
-    book.appendChild(title);
-    let author = document.createElement("h5");
-    author.textContent = `${myLibrary[i].author}`;
-    book.appendChild(author);
-    let pages = document.createElement("p");
-    pages.textContent = `${myLibrary[i].pages}`;
-    book.appendChild(pages);
-    let read = document.createElement("p");
-    read.textContent = `${myLibrary[i].read}`;
-    book.appendChild(read);
-    let removeButton = document.createElement("button");
-    removeButton.textContent = "Remove";
-    book.appendChild(removeButton);
+      let title = document.createElement("h4");
+      title.textContent = `${myLibrary[i].title}`;
+      book.appendChild(title);
+      let author = document.createElement("h5");
+      author.textContent = `${myLibrary[i].author}`;
+      book.appendChild(author);
+      let pages = document.createElement("p");
+      pages.textContent = `${myLibrary[i].pages}`;
+      book.appendChild(pages);
+      let read = document.createElement("p");
+      read.textContent = `${myLibrary[i].read}`;
+      book.appendChild(read);
+      let removeButton = document.createElement("button");
+      removeButton.textContent = "Remove";
+      book.appendChild(removeButton);
+    }
+  } else {
+    for (let i = myLibrary.length - 1; i < myLibrary.length; i++) {
+      let book = document.createElement("div");
+      book.classList.add("card");
+      content.appendChild(book);
+
+      let title = document.createElement("h4");
+      title.textContent = `${myLibrary[i].title}`;
+      book.appendChild(title);
+      let author = document.createElement("h5");
+      author.textContent = `${myLibrary[i].author}`;
+      book.appendChild(author);
+      let pages = document.createElement("p");
+      pages.textContent = `${myLibrary[i].pages}`;
+      book.appendChild(pages);
+      let read = document.createElement("p");
+      read.textContent = `${myLibrary[i].read}`;
+      book.appendChild(read);
+      let removeButton = document.createElement("button");
+      removeButton.textContent = "Remove";
+      book.appendChild(removeButton);
+    }
   }
 };
+
+// Displays initial books inside library/array
+displayBook();
 
 // Form pop-up to add new Book
 const openForm = () => {
@@ -80,7 +107,7 @@ const openForm = () => {
 // Function to close pop-up
 const closeForm = () => {
   document.querySelector(".inputs").style.display = "none";
-}
+};
 
 // Book button to add book
 addBookButton.addEventListener("click", () => {
@@ -97,30 +124,3 @@ submitButton.addEventListener("click", (e) => {
 cancelButton.addEventListener("click", () => {
   closeForm();
 });
-
-// Display library array
-const initialDisplayLibrary = () => {
-  for (let i = 0; i < myLibrary.length; i++) {
-    let book = document.createElement("div");
-    book.classList.add("card");
-    content.appendChild(book);
-
-    let title = document.createElement("h4");
-    title.textContent = `${myLibrary[i].title}`;
-    book.appendChild(title);
-    let author = document.createElement("h5");
-    author.textContent = `${myLibrary[i].author}`;
-    book.appendChild(author);
-    let pages = document.createElement("p");
-    pages.textContent = `${myLibrary[i].pages}`;
-    book.appendChild(pages);
-    let read = document.createElement("p");
-    read.textContent = `${myLibrary[i].read}`;
-    book.appendChild(read);
-    let removeButton = document.createElement("button");
-    removeButton.textContent = "Remove";
-    book.appendChild(removeButton);
-  }
-};
-
-initialDisplayLibrary();
