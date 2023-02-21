@@ -57,6 +57,7 @@ button:hover {
     color: black;
     text-align: center;
     height: 200px;
+    max-width: 500px;
 }
 
 /* Form Pop-Up Menu */

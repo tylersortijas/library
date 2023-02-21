@@ -1,13 +1,5 @@
 // Array to hold the books
-let myLibrary = [
-  {
-    title: "The Lord of the Rings",
-    id: 1,
-    author: "J. R. R. Tolkien",
-    pages: "479",
-    read: "not read yet",
-  },
-];
+let myLibrary = [];
 
 console.log(myLibrary);
 
@@ -17,7 +9,6 @@ const content = document.querySelector(".content");
 const addBookButton = document.querySelector("button");
 const cancelButton = document.querySelector("#cancel");
 const submitButton = document.querySelector("#submit");
-const removeButton = document.createElement("button");
 
 const form = document.querySelector("form");
 let titleInput = document.querySelector("#title");
@@ -33,6 +24,19 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+// Prototype to toggle read/!read
+// Use case is when you already have 1k books and want to implement a new attr to object you 
+// don't have to go back and add to every single book prior to this new feature. 
+// Prototype does allows it to be used universally past or present books.
+Book.prototype.toggleRead = function () {
+  this.read = !this.read;
+};
+
+function toggleRead(index) {
+  myLibrary[index].toggleRead();
+  displayBook();
+}
+
 // Add a book to library
 const addBookToLibrary = () => {
   let title = titleInput.value;
@@ -40,65 +44,36 @@ const addBookToLibrary = () => {
   let pages = pagesInput.value;
   let read = readInput.value;
   let newBook = new Book(title, author, pages, read);
+  console.log(newBook);
   myLibrary.push(newBook);
+  console.log(myLibrary);
   displayBook();
-  // Adds Id to any new book added
-  myLibrary.forEach((book, i) => {
-    book.id = i + 1;
-  });
 };
 
 // Displays the newest book and initial books in Library
 const displayBook = () => {
-  if (myLibrary.length === 0 || myLibrary.length === 1) {
-    for (let i = 0; i < myLibrary.length; i++) {
-      let book = document.createElement("div");
-      book.classList.add("card");
-      content.appendChild(book);
-
-      let title = document.createElement("h4");
-      title.textContent = `${myLibrary[i].title}`;
-      book.appendChild(title);
-      let author = document.createElement("h5");
-      author.textContent = `${myLibrary[i].author}`;
-      book.appendChild(author);
-      let pages = document.createElement("p");
-      pages.textContent = `${myLibrary[i].pages}`;
-      book.appendChild(pages);
-      let read = document.createElement("p");
-      read.textContent = `${myLibrary[i].read}`;
-      book.appendChild(read);
-      let removeButton = document.createElement("button");
-      removeButton.textContent = "Remove";
-      book.appendChild(removeButton);
-    }
-  } else {
-    for (let i = myLibrary.length - 1; i < myLibrary.length; i++) {
-      let book = document.createElement("div");
-      book.classList.add("card");
-      content.appendChild(book);
-
-      let title = document.createElement("h4");
-      title.textContent = `${myLibrary[i].title}`;
-      book.appendChild(title);
-      let author = document.createElement("h5");
-      author.textContent = `${myLibrary[i].author}`;
-      book.appendChild(author);
-      let pages = document.createElement("p");
-      pages.textContent = `${myLibrary[i].pages}`;
-      book.appendChild(pages);
-      let read = document.createElement("p");
-      read.textContent = `${myLibrary[i].read}`;
-      book.appendChild(read);
-      let removeButton = document.createElement("button");
-      removeButton.textContent = "Remove";
-      book.appendChild(removeButton);
-    }
+  content.innerHTML = "";
+  for (let i = 0; i < myLibrary.length; i++) {
+    let book = myLibrary[i];
+    let bookEl = document.createElement("div");
+    bookEl.classList.add("card");
+    bookEl.innerHTML = `
+    <div>
+    <h3>${book.title}</h3>
+    <h5>by ${book.author}</h5>
+    <p>${book.pages} pages</p>
+    <p>${book.read ? "Read" : "Not Read Yet"}</p>
+    <button onclick="removeBook(${i})">Remove</button>
+    <button onclick="toggleRead(${i})">Read</button>
+    </div>`;
+    content.appendChild(bookEl);
   }
 };
 
-// Displays initial books inside library/array
-displayBook();
+function removeBook(index) {
+  myLibrary.splice(index, 1);
+  displayBook();
+}
 
 // Form pop-up to add new Book
 const openForm = () => {
@@ -117,8 +92,8 @@ addBookButton.addEventListener("click", () => {
 
 // Submit button to push book to Library
 submitButton.addEventListener("click", (e) => {
-  addBookToLibrary();
   e.preventDefault();
+  addBookToLibrary();
 });
 
 // Button to close Form pop-up
