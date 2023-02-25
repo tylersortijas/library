@@ -16,13 +16,24 @@ let authorInput = document.querySelector("#author");
 let pagesInput = document.querySelector("#pages");
 let readInput = document.querySelector("#read");
 
-// Constructor for each book
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+// Class refactorization over use of a plain constructor previously
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+  
 }
+
+// // Constructor for each book
+// function Book(title, author, pages, read) {
+//   this.title = title;
+//   this.author = author;
+//   this.pages = pages;
+//   this.read = read;
+// }
 
 // Prototype to toggle read/!read
 // Use case is when you already have 1k books and want to implement a new attr to object you 
@@ -45,8 +56,10 @@ const addBookToLibrary = () => {
   let read = readInput.value;
   let newBook = new Book(title, author, pages, read);
   console.log(newBook);
+
   myLibrary.push(newBook);
   console.log(myLibrary);
+  
   displayBook();
 };
 
