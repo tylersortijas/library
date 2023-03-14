@@ -25,27 +25,24 @@
             <button>Add Book</button>
             <div class="inputs">
                 <form action="/" class="form-container">
-                    <ul>
-                        <div>
-                            <li><label for="title">Title</label></li>
-                            <li><input type="text" name="book_title" id="title" required></li>
-                        </div>
-                        <div>
-                            <li><label for="author">Author</label></li>
-                            <li><input type="text" name="book_author" id="author" required>
-                            </li>
-                        </div>
-                        <div>
-                            <li><label for="pages">Pages</label></li>
-                            <li><input type="number" name="book_pages" id="pages" required></li>
-                        </div>
-                        <div>
-                            <li><label for="read">Have you read the book?</label></li>
-                            <li><input type="checkbox" name="book_read" id="read" required></li>
-                        </div>
-                        <button type="button" id="submit">Confirm</button>
-                        <button type="button" id="cancel">Cancel</button>
-                    </ul>
+                    <div>
+                        <label for="title">Title</label></li>
+                        <input type="text" name="book_title" id="title" minlength="4" required>
+                    </div>
+                    <div>
+                        <label for="author">Author</label>
+                        <input type="text" name="book_author" id="author" required>
+                    </div>
+                    <div>
+                        <label for="pages">Pages</label>
+                        <input type="number" name="book_pages" id="pages" min="5" required>
+                    </div>
+                    <div>
+                        <label for="read">Have you read the book?</label>
+                        <input type="checkbox" name="book_read" id="read" required>
+                    </div>
+                    <button type="button" id="submit">Confirm</button>
+                    <button type="button" id="cancel">Cancel</button>
                 </form>
             </div>
         </div>

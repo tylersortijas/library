@@ -24,7 +24,6 @@ class Book {
     this.pages = pages;
     this.read = read;
   }
-  
 }
 
 // // Constructor for each book
@@ -36,8 +35,8 @@ class Book {
 // }
 
 // Prototype to toggle read/!read
-// Use case is when you already have 1k books and want to implement a new attr to object you 
-// don't have to go back and add to every single book prior to this new feature. 
+// Use case is when you already have 1k books and want to implement a new attr to object you
+// don't have to go back and add to every single book prior to this new feature.
 // Prototype does allows it to be used universally past or present books.
 Book.prototype.toggleRead = function () {
   this.read = !this.read;
@@ -56,11 +55,16 @@ const addBookToLibrary = () => {
   let read = readInput.value;
   let newBook = new Book(title, author, pages, read);
   console.log(newBook);
-
-  myLibrary.push(newBook);
-  console.log(myLibrary);
-  
-  displayBook();
+  if (titleInput.validity.tooShort || pagesInput.validity.rangeUnderflow) {
+    titleInput.setCustomValidity("Title needs to be at least 4 letters!");
+    pagesInput.setCustomValidity("The book needs to be at least 5 pages long");
+  } else {
+    titleInput.setCustomValidity("");
+    pagesInput.setCustomValidity("");
+    myLibrary.push(newBook);
+    console.log(myLibrary);
+    displayBook();
+  }
 };
 
 // Displays the newest book and initial books in Library
